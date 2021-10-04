@@ -182,19 +182,29 @@ fn main() {
         print_vec("PLAYER:", &player_hand);
         if get_value(&dealer_hand) == 21 {
             println!("Dealer wins");
-            if !play_again() {
+            if !play_again() 
+            {
                 break;
-            };
+            }
+            else
+            {
+                continue
+            }
         }
         player_actions(&mut deck, &mut player_hand);
         let player_score = get_value(&player_hand);
         if player_score > 21
         {
             println!("Dealer wins");
-            if !play_again() {
+            if !play_again() 
+            {
                 break;
-            };
-        }
+            }
+            else
+            {
+                continue
+            }
+}
         dealer_resolution(&mut deck, &mut dealer_hand);
         let dealer_score = get_value(&dealer_hand);
         println!("DEALER SCORE: {}, PLAYER SCORE: {}", dealer_score, player_score);
