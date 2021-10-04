@@ -204,7 +204,7 @@ fn main() {
             {
                 continue
             }
-}
+        }
         dealer_resolution(&mut deck, &mut dealer_hand);
         let dealer_score = get_value(&dealer_hand);
         println!("DEALER SCORE: {}, PLAYER SCORE: {}", dealer_score, player_score);
