@@ -269,6 +269,14 @@ fn game_start(ctx: &mut GameContext) -> GameState {
 
 fn player_turn(ctx: &mut GameContext) -> GameState {
     loop {
+        if ctx.player.score() > 21
+        {
+            return GameState::Scoring
+        }
+        if ctx.player.score() == 21
+        {
+            return GameState::DealerTurn
+        }
         match get_choice(vec!["Hit (h)", "Stand (s)",]).trim() {
             "h" => ctx.player.0.push(ctx.deck.0.pop().unwrap()),
             "s" => return GameState::DealerTurn,
@@ -276,10 +284,6 @@ fn player_turn(ctx: &mut GameContext) -> GameState {
             _ => continue,
         };
         print_vec("PLAYER HAND", &ctx.player.0);
-        if ctx.player.score() > 21
-        {
-            return GameState::Scoring
-        }
     }
 }
 
